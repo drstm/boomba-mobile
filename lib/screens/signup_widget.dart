@@ -39,8 +39,8 @@ class SignupWidget extends StatelessWidget {
               1,
             ],
             colors: [
-              Color.fromARGB(255, 248, 132, 98),
-              Color.fromARGB(255, 140, 28, 140),
+              Color.fromARGB(255, 99, 114, 248),
+              Color.fromARGB(255, 28, 135, 140),
             ],
           ),
         ),
@@ -201,8 +201,8 @@ class SignupWidget extends StatelessWidget {
                     child: Switch.adaptive(
                       value: true,
                       inactiveTrackColor: Color.fromARGB(60, 0, 0, 0),
-                      activeColor: Color.fromARGB(255, 142, 28, 138),
-                      activeTrackColor: Color.fromARGB(102, 142, 28, 138),
+                      activeColor: Color.fromARGB(255, 79, 83, 126),
+                      activeTrackColor: Color.fromARGB(102, 79, 83, 126),
                       onChanged: (value) {
                       
                       },
@@ -230,8 +230,13 @@ class SignupWidget extends StatelessWidget {
                 color: Color.fromARGB(255, 255, 255, 255),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(2)),
+                  side: BorderSide(
+                    width: 2,
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    style: BorderStyle.solid,
+                  ),
                 ),
-                textColor: Color.fromARGB(255, 217, 104, 111),
+                textColor: Color.fromARGB(255, 99, 114, 248),
                 padding: EdgeInsets.all(0),
               ),
             ),

@@ -1,13 +1,12 @@
 
 import 'package:flutter/material.dart';
-import 'package:boomba/cells/advertisement_item_widget.dart';
-import 'package:boomba/cells/event_item_widget.dart';
-import 'package:boomba/cells/lifetime_event_item_widget.dart';
-import 'package:boomba/cells/news_item_widget.dart';
-import 'package:boomba/cells/news_two_item_widget.dart';
 
 
 class TimelineWidget extends StatelessWidget {
+  
+  void onItemPressed(BuildContext context) {
+  
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,19 @@ class TimelineWidget extends StatelessWidget {
             fontFamily: "Lato",
           ),
         ),
-        automaticallyImplyLeading: false,
+        leading: FlatButton(
+          onPressed: () => this.onItemPressed(context),
+          textColor: Color.fromARGB(255, 255, 255, 255),
+          child: Text(
+            "Item",
+            style: TextStyle(
+              color: Color.fromARGB(255, 0, 0, 0),
+              fontSize: 12,
+              fontFamily: "",
+            ),
+            textAlign: TextAlign.left,
+          ),
+        ),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -33,33 +44,18 @@ class TimelineWidget extends StatelessWidget {
                 1,
               ],
               colors: [
-                Color.fromARGB(255, 248, 132, 98),
-                Color.fromARGB(255, 140, 28, 140),
+                Color.fromARGB(255, 98, 113, 248),
+                Color.fromARGB(255, 28, 135, 140),
               ],
             ),
           ),
         ),
       ),
       body: Container(
-        constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
           color: Color.fromARGB(255, 244, 242, 244),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                margin: EdgeInsets.only(top: 64),
-                child: ListView.builder(
-                  itemCount: 15,
-                  itemBuilder: (context, index) => NewsItemWidget(),
-                ),
-              ),
-            ),
-          ],
-        ),
+        child: Container(),
       ),
     );
   }

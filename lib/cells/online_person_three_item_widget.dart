@@ -11,7 +11,7 @@ class OnlinePersonThreeItemWidget extends StatelessWidget {
       width: 60,
       height: 75,
       child: Stack(
-        alignment: Alignment.topCenter,
+        alignment: Alignment.bottomCenter,
         children: [
           Positioned(
             left: 11,

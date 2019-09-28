@@ -21,8 +21,8 @@ dependencies:
   cupertino_icons: ^0.1.2
   
   # Declaration of dependencies included by Supernova Studio.
-  google_maps_flutter: ^0.4.0
   supernova_flutter_ui_toolkit: ^0.0.2
+  google_maps_flutter: ^0.4.0
 
 dev_dependencies:
   flutter_test:
@@ -74,22 +74,14 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages
   fonts:
+    - family: .SF NS Text
+      fonts:
+        - asset: assets/fonts/SFNSText.ttf
+    - family: .SF NS Display
+      fonts:
+        - asset: assets/fonts/SFNSDisplay.ttf
     - family: Lato
       fonts:
         - asset: assets/fonts/Lato-Bold.ttf
           weight: 700
         - asset: assets/fonts/Lato-Regular.ttf
-    - family: .SF NS Display
-      fonts:
-        - asset: assets/fonts/SFNSDisplay.ttf
-    - family: Lato Light
-      fonts:
-        - asset: assets/fonts/Lato-Light.ttf
-          weight: 300
-    - family: Lato Black
-      fonts:
-        - asset: assets/fonts/Lato-Black.ttf
-          weight: 900
-    - family: .SF NS Text
-      fonts:
-        - asset: assets/fonts/SFNSText.ttf

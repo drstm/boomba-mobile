@@ -53,8 +53,8 @@ class EventDetailWidget extends StatelessWidget {
                 1,
               ],
               colors: [
-                Color.fromARGB(255, 248, 132, 98),
-                Color.fromARGB(255, 140, 28, 140),
+                Color.fromARGB(255, 98, 113, 248),
+                Color.fromARGB(255, 28, 135, 140),
               ],
             ),
           ),

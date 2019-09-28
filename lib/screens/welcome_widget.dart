@@ -93,7 +93,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> with SingleTickerProvider
               child: Container(
                 margin: EdgeInsets.only(top: 20),
                 child: Text(
-                  "Conquer the stars\nfrom behind the screen.",
+                  "Play",
                   style: TextStyle(
                     color: Color.fromARGB(255, 255, 255, 255),
                     fontSize: 18,
@@ -106,7 +106,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> with SingleTickerProvider
             Spacer(),
             Container(
               height: 60,
-              margin: EdgeInsets.only(left: 30, right: 30, bottom: 85),
+              margin: EdgeInsets.only(left: 30, right: 30, bottom: 123),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -129,7 +129,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> with SingleTickerProvider
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(2)),
                       ),
-                      textColor: Color.fromARGB(255, 217, 104, 111),
+                      textColor: Color.fromARGB(255, 99, 114, 248),
                       padding: EdgeInsets.all(0),
                     ),
                   ),
@@ -152,27 +152,17 @@ class _WelcomeWidgetState extends State<WelcomeWidget> with SingleTickerProvider
                       color: Color.fromARGB(255, 255, 255, 255),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(2)),
+                        side: BorderSide(
+                          width: 2,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          style: BorderStyle.solid,
+                        ),
                       ),
-                      textColor: Color.fromARGB(255, 219, 104, 110),
+                      textColor: Color.fromARGB(255, 99, 114, 248),
                       padding: EdgeInsets.all(0),
                     ),
                   ),
                 ],
-              ),
-            ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                margin: EdgeInsets.only(bottom: 20),
-                child: Text(
-                  "© 2050 Supernova Studio",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 255, 255, 255),
-                    fontSize: 15,
-                    fontFamily: "Lato",
-                  ),
-                  textAlign: TextAlign.center,
-                ),
               ),
             ),
           ],

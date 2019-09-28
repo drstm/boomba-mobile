@@ -36,8 +36,8 @@ class LoginWidget extends StatelessWidget {
               1,
             ],
             colors: [
-              Color.fromARGB(255, 248, 132, 98),
-              Color.fromARGB(255, 140, 28, 140),
+              Color.fromARGB(255, 98, 113, 248),
+              Color.fromARGB(255, 28, 135, 140),
             ],
           ),
         ),
@@ -66,7 +66,7 @@ class LoginWidget extends StatelessWidget {
               child: Container(
                 margin: EdgeInsets.only(top: 20),
                 child: Text(
-                  "Welcome back.\nThe galaxy awaits you.",
+                  "Welcome back.",
                   style: TextStyle(
                     color: Color.fromARGB(255, 255, 255, 255),
                     fontSize: 18,
@@ -78,7 +78,7 @@ class LoginWidget extends StatelessWidget {
             ),
             Container(
               height: 101,
-              margin: EdgeInsets.only(left: 20, top: 70, right: 20),
+              margin: EdgeInsets.only(left: 20, top: 92, right: 20),
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 255, 255, 255),
                 boxShadow: [
@@ -165,8 +165,13 @@ class LoginWidget extends StatelessWidget {
                 color: Color.fromARGB(255, 255, 255, 255),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(2)),
+                  side: BorderSide(
+                    width: 2,
+                    color: Color.fromARGB(255, 99, 114, 248),
+                    style: BorderStyle.solid,
+                  ),
                 ),
-                textColor: Color.fromARGB(255, 217, 104, 111),
+                textColor: Color.fromARGB(255, 99, 114, 248),
                 padding: EdgeInsets.all(0),
               ),
             ),
