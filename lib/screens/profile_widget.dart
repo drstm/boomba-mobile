@@ -9,12 +9,15 @@ import 'package:boomba/screens/profile_settings_widget.dart';
 class ProfileWidget extends StatelessWidget {
   
   void onLeftItemPressed(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileSettingsWidget()));
-  
+  Color hexToColor(String code) => Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
+
   @override
   Widget build(BuildContext context) {
   
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: hexToColor("#1b868c"),
         title: Text(
           "Dr. What Profile",
           style: TextStyle(
@@ -28,33 +31,9 @@ class ProfileWidget extends StatelessWidget {
           FlatButton(
             onPressed: () => this.onLeftItemPressed(context),
             textColor: Color.fromARGB(255, 255, 255, 255),
-            child: Text(
-              "Settings",
-              style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
-                fontSize: 12,
-                fontFamily: "",
-              ),
-              textAlign: TextAlign.left,
-            ),
+            child: new Icon(Icons.settings)
           ),
-        ],
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment(-0.014, 0.515),
-              end: Alignment(1.014, 0.485),
-              stops: [
-                0,
-                1,
-              ],
-              colors: [
-                Color.fromARGB(255, 98, 113, 248),
-                Color.fromARGB(255, 28, 135, 140),
-              ],
-            ),
-          ),
-        ),
+        ]
       ),
       body: Container(
         constraints: BoxConstraints.expand(),
