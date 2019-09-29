@@ -1,9 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:folding_cell/folding_cell.dart';
 
 
-class PuzzleOne extends StatelessWidget {
+class PuzzleTwo extends StatelessWidget {
   final _foldingCellKey = GlobalKey<SimpleFoldingCellState>();
   void onGroupPressed(BuildContext context) => Navigator.pop(context);
   Color hexToColor(String code) => Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
@@ -61,7 +60,7 @@ class PuzzleOne extends StatelessWidget {
               child: Container(
                 margin: EdgeInsets.only(top: 20),
                 child: Text(
-                  "On this table lies the knowledge of \nan entire generation of hackers.",
+                  "You are in my house now\nYou can find me hanging around... Somewhere",
                   style: TextStyle(
                     color: Color.fromARGB(255, 255, 255, 255),
                     fontSize: 18,
