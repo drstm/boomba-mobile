@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/animation.dart';
 
+class ScavengerWidget extends StatefulWidget {
+  _ScavengerWidegetPageOne createState() => _ScavengerWidegetPageOne();
+}
 
-class ScavengerWidget extends StatelessWidget {
+class _ScavengerWidegetPageOne extends State<ScavengerWidget> with TickerProviderStateMixin {
 
   Color hexToColor(String code) => Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
   void onGroupPressed(BuildContext context) => Navigator.pop(context);
+
+  AnimationController controller;
+  Animation<double> animation;
+
+  initState() {
+    super.initState();
+    controller = AnimationController(
+      duration: const Duration(milliseconds: 1500), 
+      vsync: this
+    );
+    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+    controller.forward();
+  }
 
   @override
   Widget build(BuildContext context){
