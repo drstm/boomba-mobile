@@ -1,9 +1,6 @@
 
 import 'package:boomba/screens/scavenger_start.dart';
 import 'package:flutter/material.dart';
-import 'package:boomba/cells/view_item_widget.dart';
-import 'package:boomba/cells/view_three_item_widget.dart';
-import 'package:boomba/cells/view_two_item_widget.dart';
 import 'package:boomba/screens/profile_settings_widget.dart';
 
 
