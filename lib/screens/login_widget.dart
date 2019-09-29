@@ -1,4 +1,8 @@
 
+
+import 'package:boomba/screens/scavenger_expl4.dart';
+import 'package:boomba/screens/puzzle_three.dart';
+import 'package:boomba/screens/puzzle_four.dart';
 import 'package:flutter/material.dart';
 import 'package:boomba/screens/tab_bar_widget.dart';
 import 'package:boomba/screens/profile_widget.dart';
@@ -7,6 +11,7 @@ import 'package:boomba/screens/profile_widget.dart';
 
 class LoginWidget extends StatelessWidget {
   
+
   void onLoginPressed(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileWidget()));
   
   void onForgotYourPasswordPressed(BuildContext context) {

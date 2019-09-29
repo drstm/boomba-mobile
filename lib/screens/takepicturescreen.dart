@@ -1,25 +1,69 @@
 
+import 'package:boomba/screens/camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:camera/camera.dart';
 
+Color hexToColor(String code) => Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
+final cameras =  availableCameras();
+final firstCamera = cameras.toString();
 
-class EventDetailWidget extends StatelessWidget {
+class TakePictureScreen extends StatefulWidget {
+  final CameraDescription camera;
+
+  const TakePictureScreen({
+    Key key,
+     this.camera,
+  }) : 
+    super(key: key);
+
+  @override
+  TakePictureScreenState createState() => TakePictureScreenState();
+}
+
+class TakePictureScreenState extends State<TakePictureScreen> {
+  // Add two variables to the state class to store the CameraController and
+  // the Future.
+  CameraController _controller;
+  Future<void> _initializeControllerFuture;
+
   
-  void onGroupPressed(BuildContext context) => Navigator.pop(context);
+  @override
+  void initState() {
+    super.initState();
+    // To display the current output from the camera,
+    // create a CameraController.
+    _controller = CameraController(
+      // Get a specific camera from the list of available cameras.
+      widget.camera,
+      // Define the resolution to use.
+      ResolutionPreset.medium,
+    );
+
+    // Next, initialize the controller. This returns a Future.
+    _initializeControllerFuture = _controller.initialize();
+  }
+
+  @override
+  void dispose() {
+    // Dispose of the controller when the widget is disposed.
+    _controller.dispose();
+    super.dispose();
+  }
+
+ void onGroupPressed(BuildContext context) => Navigator.pop(context);
   
   void onLeftItemPressed(BuildContext context) {
   
   }
-  
   @override
   Widget build(BuildContext context) {
-  
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: hexToColor("#1b868c"),
         title: Text(
-          "Guess who's back?",
+          "Check clue",
           style: TextStyle(
-            color: Color.fromARGB(255, 255, 255, 255),
+            //color: Color.fromARGB(255, 255, 255, 255),
             fontSize: 17,
             fontFamily: "Lato",
           ),
@@ -28,21 +72,6 @@ class EventDetailWidget extends StatelessWidget {
           onPressed: () => this.onGroupPressed(context),
           icon: Image.asset("assets/images/group-2.png",),
         ),
-        actions: [
-          FlatButton(
-            onPressed: () => this.onLeftItemPressed(context),
-            textColor: Color.fromARGB(255, 255, 255, 255),
-            child: Text(
-              "Events",
-              style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
-                fontSize: 12,
-                fontFamily: "",
-              ),
-              textAlign: TextAlign.left,
-            ),
-          ),
-        ],
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -53,12 +82,19 @@ class EventDetailWidget extends StatelessWidget {
                 1,
               ],
               colors: [
-                Color.fromARGB(255, 98, 113, 248),
-                Color.fromARGB(255, 28, 135, 140),
+                hexToColor("#1b868c"),
+                hexToColor("#1b868c"),
               ],
             ),
           ),
         ),
+        actions: [
+          FlatButton(
+            onPressed: () => this.onLeftItemPressed(context),
+            textColor: Color.fromARGB(255, 255, 255, 255),
+            child: new Icon(Icons.switch_camera)
+          ),
+        ]
       ),
       body: Container(
         constraints: BoxConstraints.expand(),
@@ -81,11 +117,7 @@ class EventDetailWidget extends StatelessWidget {
                     top: 0,
                     right: 0,
                     bottom: 0,
-                    child: GoogleMap(
-                      onMapCreated: (controller) {
-                      
-                      },
-                    ),
+                    child: CameraPreview(_controller)
                   ),
                   Positioned(
                     left: 0,
