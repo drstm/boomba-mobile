@@ -56,8 +56,8 @@ class logoImage extends StatelessWidget {
               ],
             ),
             child: Image.asset(
-              "assets/images/logo.png",
-              fit: BoxFit.none,
+              "assets/images/BoombaLogo2.png",
+              fit: BoxFit.scaleDown,
             ),
           ),
         ),
