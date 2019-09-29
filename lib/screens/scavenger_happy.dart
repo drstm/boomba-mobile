@@ -1,19 +1,22 @@
-import 'package:boomba/screens/puzzle_one.dart';
+import 'package:boomba/screens/show_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 
-class ScavengerWidget extends StatefulWidget {
-  _ScavengerWidegetPageOne createState() => _ScavengerWidegetPageOne();
+class ScavengerHappyWidget extends StatefulWidget {
+  _ScavengerHappy createState() => _ScavengerHappy();
 }
 
-class _ScavengerWidegetPageOne extends State<ScavengerWidget> with TickerProviderStateMixin {
+class _ScavengerHappy extends State<ScavengerHappyWidget> with TickerProviderStateMixin {
+  static List<String> gifArray = ['https://media.giphy.com/media/3oxHQEESAwCqXinNIc/source.gif', 'https://media.giphy.com/media/VdQmSNvWvrvLZsbZkE/source.gif']; 
+  var randomGif = (gifArray.toList()..shuffle()).first;
 
   Color hexToColor(String code) => Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
   void onGroupPressed(BuildContext context) => Navigator.pop(context);
-  void onFABPress(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => PuzzleOne()));
 
   AnimationController controller;
   Animation<double> animation;
+
+  int delayAmount = 500;
 
   initState() {
     super.initState();
@@ -42,14 +45,14 @@ class _ScavengerWidegetPageOne extends State<ScavengerWidget> with TickerProvide
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Align(
-              alignment: Alignment.topCenter,
-              child: FadeTransition(
-                opacity: animation,
+            ShowUp(
+              delay: delayAmount,
+              child: Align(
+                alignment: Alignment.topCenter,
                 child: Container(
                   margin: EdgeInsets.only(top: 89),
                   child: Text(
-                    "Welcome!",
+                    "Yaas",
                     style: TextStyle(
                       color: hexToColor("#1b868c"),
                       fontSize: 42,
@@ -59,38 +62,13 @@ class _ScavengerWidegetPageOne extends State<ScavengerWidget> with TickerProvide
                     ),
                     textAlign: TextAlign.center,
                   ),
-                ),
-              )
-            ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: FadeTransition(
-                opacity: animation,
-                child: Container(
-                  margin: EdgeInsets.only(top: 20),
-                  child: Text(
-                    "Welcome to the HackNY-themed scavenger hunt!" + 
-                    "\n\nA bunch of clues are waiting for you to discover the interior of the Institute of Mathematics building" +
-                    "\n\nAre you ready? You may be able to hack, but are you able to think?",
-                    style: TextStyle(
-                      color: hexToColor("#1b868c"),
-                      fontSize: 18,
-                      fontFamily: "Lato",
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              )
-            ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: FadeTransition(
-                opacity: animation,
-                child: Container(
-                  margin: EdgeInsets.only(top: 20),
-                  child: Image.network("https://media.giphy.com/media/aqMY57vLdkghi/giphy.gif"),
-                ),
+                )
               ),
+            ),
+            Spacer(),
+            ShowUp(
+              delay: delayAmount + 200,
+              child: Image.network(randomGif)
             )
           ],
         ),
@@ -101,8 +79,7 @@ class _ScavengerWidegetPageOne extends State<ScavengerWidget> with TickerProvide
         color: hexToColor("#1b868c"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => this.onFABPress(context),
-        tooltip: 'Increment Counter',
+        onPressed: () => {},
         child: Text("Start"),
       ),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
