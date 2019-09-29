@@ -1,4 +1,5 @@
 
+import 'package:boomba/screens/scavenger_start.dart';
 import 'package:flutter/material.dart';
 import 'package:boomba/cells/view_item_widget.dart';
 import 'package:boomba/cells/view_three_item_widget.dart';
@@ -10,6 +11,7 @@ class ProfileWidget extends StatelessWidget {
   
   void onLeftItemPressed(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileSettingsWidget()));
   Color hexToColor(String code) => Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
+  void HackNYScavenger(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => ScavengerWidget()));
 
   @override
   Widget build(BuildContext context) {
@@ -99,10 +101,7 @@ class ProfileWidget extends StatelessWidget {
                       ),
                       ),
                       textColor: Color.fromARGB(255, 255, 255, 255),
-                      onPressed: () {
-                        //Code to execute when Floating Action Button is clicked
-                        //...
-                      },
+                      onPressed: () => this.HackNYScavenger(context)
                     ),
                   ),
                 ],
