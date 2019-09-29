@@ -42,37 +42,43 @@ class _ScavengerWidegetPageOne extends State<ScavengerWidget> with TickerProvide
           children: [
             Align(
               alignment: Alignment.topCenter,
-              child: Container(
-                margin: EdgeInsets.only(top: 89),
-                child: Text(
-                  "Welcome!",
-                  style: TextStyle(
-                    color: hexToColor("#1b868c"),
-                    fontSize: 42,
-                    letterSpacing: -1,
-                    fontFamily: "Lato",
-                    fontWeight: FontWeight.w700,
+              child: FadeTransition(
+                opacity: animation,
+                child: Container(
+                  margin: EdgeInsets.only(top: 89),
+                  child: Text(
+                    "Welcome!",
+                    style: TextStyle(
+                      color: hexToColor("#1b868c"),
+                      fontSize: 42,
+                      letterSpacing: -1,
+                      fontFamily: "Lato",
+                      fontWeight: FontWeight.w700,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
-              ),
+              )
             ),
             Align(
               alignment: Alignment.topCenter,
-              child: Container(
-                margin: EdgeInsets.only(top: 20),
-                child: Text(
-                  "Welcome to the HackNY-themed scavenger hunt!" + 
-                  "\n\nA bunch of clues are waiting for you to discover the interior of the Institute of Mathematics building" +
-                  "\n\nAre you ready? You may be able to hack, but are you able to think?",
-                  style: TextStyle(
-                    color: hexToColor("#1b868c"),
-                    fontSize: 18,
-                    fontFamily: "Lato",
+              child: FadeTransition(
+                opacity: animation,
+                child: Container(
+                  margin: EdgeInsets.only(top: 20),
+                  child: Text(
+                    "Welcome to the HackNY-themed scavenger hunt!" + 
+                    "\n\nA bunch of clues are waiting for you to discover the interior of the Institute of Mathematics building" +
+                    "\n\nAre you ready? You may be able to hack, but are you able to think?",
+                    style: TextStyle(
+                      color: hexToColor("#1b868c"),
+                      fontSize: 18,
+                      fontFamily: "Lato",
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
-              ),
+              )
             ),
           ],
         ),
