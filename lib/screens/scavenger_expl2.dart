@@ -1,3 +1,4 @@
+import 'package:boomba/screens/puzzle_three.dart';
 import 'package:boomba/screens/show_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
@@ -10,6 +11,7 @@ class _ScavengerExplain2 extends State<ScavengerExplain2> with TickerProviderSta
 
   Color hexToColor(String code) => Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
   void onGroupPressed(BuildContext context) => Navigator.pop(context);
+  void onFABPress(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => PuzzleThree()));
 
   AnimationController controller;
   Animation<double> animation;
@@ -48,7 +50,7 @@ class _ScavengerExplain2 extends State<ScavengerExplain2> with TickerProviderSta
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Container(
-                  margin: EdgeInsets.only(top: 89),
+                  margin: EdgeInsets.only(top: 50),
                   child: Text(
                     'BOOMBA!',
                     style: TextStyle(
@@ -68,7 +70,7 @@ class _ScavengerExplain2 extends State<ScavengerExplain2> with TickerProviderSta
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Container(
-                  margin: EdgeInsets.only(top: 80),
+                  margin: EdgeInsets.only(top: 50),
                   child: Text(
                     'Congrats! \n Puzzle #2 completed',
                     style: TextStyle(
@@ -88,12 +90,12 @@ class _ScavengerExplain2 extends State<ScavengerExplain2> with TickerProviderSta
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Container(
-                  margin: EdgeInsets.only(top: 80),
+                  margin: EdgeInsets.only(top: 50),
                   child: Text(
                     'Richard Courant founded two institutes of Mathematical sciences in his life, and you?\n \n The Courant Institute of Mathematical Sciences was founded in 1935, and has been the home of many award-winning researchers, such as the Turing-Award and Deep Learning juggernaut Yann LeCun.',
                     style: TextStyle(
                       color: hexToColor("#1b868c"),
-                      fontSize: 24,
+                      fontSize: 20,
                       letterSpacing: -1,
                       fontFamily: "Lato",
                       fontWeight: FontWeight.w700,
@@ -117,7 +119,7 @@ class _ScavengerExplain2 extends State<ScavengerExplain2> with TickerProviderSta
         color: hexToColor("#1b868c"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () => this.onFABPress(context),
         child: Text("Next"),
       ),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

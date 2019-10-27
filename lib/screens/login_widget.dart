@@ -203,6 +203,7 @@ class LoginWidget extends StatelessWidget {
           ],
         ),
       ),
+      resizeToAvoidBottomInset: false,
     );
   }
 }

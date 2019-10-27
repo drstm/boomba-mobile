@@ -1,12 +1,38 @@
 
+import 'package:boomba/screens/scavenger_happy.dart';
+import 'package:boomba/screens/scavenger_sad.dart';
 import 'package:flutter/material.dart';
 import 'package:folding_cell/folding_cell.dart';
 
+class PuzzleThree extends StatefulWidget {
+  @override
+  _PuzzleThree createState() => _PuzzleThree();
+}
 
-class PuzzleThree extends StatelessWidget {
+
+class _PuzzleThree extends State<PuzzleThree> {
+  final myController = TextEditingController();
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
+  }
   final _foldingCellKey = GlobalKey<SimpleFoldingCellState>();
   void onGroupPressed(BuildContext context) => Navigator.pop(context);
+  void onSuccess(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => ScavengerHappyWidget(nextEpisode: "four",)));
+  void onFailure(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => ScavengerSad()));
   Color hexToColor(String code) => Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
+  void onFABPress(BuildContext context){
+    // Navigator.push(context, MaterialPageRoute(builder: (context) => PuzzleTwo()));
+    // print(myController.text);
+    if (myController.text.toString().contains("stoker")){
+      onSuccess(context);
+    } else {
+      onFailure(context);
+    }
+  }
+    
   
   @override
   Widget build(BuildContext context) {
@@ -42,12 +68,12 @@ class PuzzleThree extends StatelessWidget {
             Align(
               alignment: Alignment.topCenter,
               child: Container(
-                margin: EdgeInsets.only(top: 10),
+                margin: EdgeInsets.only(top: 0),
                 child: Text(
                   "Puzzle #3",
                   style: TextStyle(
                     color: Color.fromARGB(255, 255, 255, 255),
-                    fontSize: 42,
+                    fontSize: 40,
                     letterSpacing: -1,
                     fontFamily: "Lato",
                     fontWeight: FontWeight.w700,
@@ -59,7 +85,7 @@ class PuzzleThree extends StatelessWidget {
             Align(
               alignment: Alignment.topCenter,
               child: Container(
-                margin: EdgeInsets.only(top: 20),
+                margin: EdgeInsets.only(top: 0),
                 width: 200.0,
                 child: Image.asset('assets/images/stoker.jpeg')
                   ),
@@ -68,15 +94,6 @@ class PuzzleThree extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: Container(
                 margin: EdgeInsets.only(top: 20),
-                child: Text(
-                  "Who is he?",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 255, 255, 255),
-                    fontSize: 18,
-                    fontFamily: "Lato",
-                  ),
-                  textAlign: TextAlign.center,
-                ),
               ),
             ),
             Align(
@@ -98,10 +115,10 @@ class PuzzleThree extends StatelessWidget {
               child: Container(
                 // margin: EdgeInsets.only(top: 20),
                 child: TextField(
-                  obscureText: true,
+                  controller: myController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Key',
+                    labelText: 'Who is he?',
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -116,11 +133,12 @@ class PuzzleThree extends StatelessWidget {
         color: hexToColor("#1b868c"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () => this.onFABPress(context),
         tooltip: 'Increment Counter',
         child: Text("Submit"),
       ),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    resizeToAvoidBottomInset: false,
     );
   }
 

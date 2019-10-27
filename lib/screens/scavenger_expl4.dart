@@ -1,3 +1,4 @@
+import 'package:boomba/screens/profile_widget.dart';
 import 'package:boomba/screens/show_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
@@ -9,9 +10,9 @@ class ScavengerExplain4 extends StatefulWidget {
 class _ScavengerExplain4 extends State<ScavengerExplain4> with TickerProviderStateMixin {
   static List<String> gifArray = ['https://media.giphy.com/media/3oEdv6thH4aJHVcs6c/giphy.gif'];
   var randomGif = (gifArray.toList()..shuffle()).first;
-
   Color hexToColor(String code) => Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
   void onGroupPressed(BuildContext context) => Navigator.pop(context);
+  void onFABPress(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileWidget()));
 
   AnimationController controller;
   Animation<double> animation;
@@ -70,12 +71,12 @@ class _ScavengerExplain4 extends State<ScavengerExplain4> with TickerProviderSta
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Container(
-                  margin: EdgeInsets.only(top: 30),
+                  margin: EdgeInsets.only(top: 0),
                   child: Text(
                     'Congrats! \n You made it until the end!',
                     style: TextStyle(
                       color: hexToColor("#1b868c"),
-                      fontSize: 34,
+                      fontSize: 28,
                       letterSpacing: -1,
                       fontFamily: "Lato",
                       fontWeight: FontWeight.w700,
@@ -90,7 +91,7 @@ class _ScavengerExplain4 extends State<ScavengerExplain4> with TickerProviderSta
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Container(
-                  margin: EdgeInsets.only(top: 30),
+                  margin: EdgeInsets.only(top: 28),
                   child: Text(
                     'Thanks for playing!',
                     style: TextStyle(
@@ -119,7 +120,7 @@ class _ScavengerExplain4 extends State<ScavengerExplain4> with TickerProviderSta
         color: hexToColor("#1b868c"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () => this.onFABPress(context),
         child: Text("Finish"),
       ),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

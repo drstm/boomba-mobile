@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:folding_cell/folding_cell.dart';
 
+import 'camtest.dart';
+
 
 class PuzzleTwo extends StatelessWidget {
   final _foldingCellKey = GlobalKey<SimpleFoldingCellState>();
   void onGroupPressed(BuildContext context) => Navigator.pop(context);
   Color hexToColor(String code) => Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
+  void onFABPress(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => CamTest(category: "Courant_paint",puzzle: "three")));
   
   @override
   Widget build(BuildContext context) {
@@ -43,7 +46,7 @@ class PuzzleTwo extends StatelessWidget {
               child: Container(
                 margin: EdgeInsets.only(top: 89),
                 child: Text(
-                  "Puzzle #1",
+                  "Puzzle #2",
                   style: TextStyle(
                     color: Color.fromARGB(255, 255, 255, 255),
                     fontSize: 42,
@@ -93,9 +96,9 @@ class PuzzleTwo extends StatelessWidget {
         color: hexToColor("#1b868c"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () => this.onFABPress(context),
         tooltip: 'Increment Counter',
-        child: new Icon(Icons.camera_alt),
+        child: new Icon(Icons.chevron_right),
       ),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
@@ -132,7 +135,7 @@ class PuzzleTwo extends StatelessWidget {
     return Container(
       color: Color(0xFFff9234),
       alignment: Alignment.center,
-      child: Text("It's like the MLB but for geeks",
+      child: Text("I'm trapped in the first floor",
         style: TextStyle(
         color: Color(0xFF2e282a),
         fontFamily: 'OpenSans',

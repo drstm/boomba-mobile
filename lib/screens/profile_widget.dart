@@ -55,7 +55,7 @@ class ProfileWidget extends StatelessWidget {
           children: [
             Divider(color: Colors.black, height: 1),
             Container(
-              height: 320,
+              height: 250,
                margin: EdgeInsets.only(top: 20),
               //decoration: BoxDecoration(
                 //color: Color.fromARGB(255, 255, 255, 255),
@@ -65,14 +65,14 @@ class ProfileWidget extends StatelessWidget {
                   Container(
                     width: 124,
                     height: 124,
-                    margin: EdgeInsets.only(top: 20),
+                    // margin: EdgeInsets.only(top: 5),
                     child: Image.asset(
                       "assets/images/hackny_logo_small.png",
                       fit: BoxFit.scaleDown,
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 11),
+                    margin: EdgeInsets.only(top: 5),
                     child: Text(
                       "HackNY at NYU Courant",
                       style: TextStyle(
@@ -83,7 +83,6 @@ class ProfileWidget extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  Spacer(),
                   Container(
                     width: 150,
                     margin: EdgeInsets.only(bottom: 20),
@@ -105,14 +104,14 @@ class ProfileWidget extends StatelessWidget {
               ),
             ),
             Divider(color: Colors.black, height: 5),
+            // Container(
+            //   height: 30,
+            //   // decoration: BoxDecoration(
+            //   //   color: hexToColor("#1b868c")
+            //   // ),
+            // ),
             Container(
-              height: 30,
-              // decoration: BoxDecoration(
-              //   color: hexToColor("#1b868c")
-              // ),
-            ),
-            Container(
-              height: 320,
+              height: 270,
               margin: EdgeInsets.only(top: 20),
               // decoration: BoxDecoration(
               //   color: Color.fromARGB(255, 255, 255, 255),
@@ -122,7 +121,7 @@ class ProfileWidget extends StatelessWidget {
                   Container(
                     width: 124,
                     height: 124,
-                    margin: EdgeInsets.only(top: 20),
+                    margin: EdgeInsets.only(top: 5),
                     child: Image.asset(
                       "assets/images/wsp_small.png",
                       fit: BoxFit.scaleDown,
@@ -167,6 +166,7 @@ class ProfileWidget extends StatelessWidget {
           ],
         ),
       ),
+      resizeToAvoidBottomInset: false,
     );
   }
 }

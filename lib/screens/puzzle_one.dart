@@ -1,10 +1,12 @@
 
+import 'package:boomba/screens/camtest.dart';
 import 'package:flutter/material.dart';
 import 'package:folding_cell/folding_cell.dart';
 
 
 class PuzzleOne extends StatelessWidget {
   final _foldingCellKey = GlobalKey<SimpleFoldingCellState>();
+  void onFABPress(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => CamTest(category: "MLH_table", puzzle: "two",)));
   void onGroupPressed(BuildContext context) => Navigator.pop(context);
   Color hexToColor(String code) => Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
   
@@ -94,9 +96,9 @@ class PuzzleOne extends StatelessWidget {
         color: hexToColor("#1b868c"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () => this.onFABPress(context),
         tooltip: 'Increment Counter',
-        child: new Icon(Icons.camera_alt),
+        child: new Icon(Icons.chevron_right),
       ),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );

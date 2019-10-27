@@ -1,13 +1,35 @@
 
+import 'package:boomba/screens/scavenger_happy.dart';
+import 'package:boomba/screens/scavenger_sad.dart';
 import 'package:flutter/material.dart';
 import 'package:folding_cell/folding_cell.dart';
 
+class PuzzleFour extends StatefulWidget {
+  _PuzzleFour createState() => _PuzzleFour();
+}
 
-class PuzzleFour extends StatelessWidget {
+class _PuzzleFour extends State<PuzzleFour> {
+  final myController = TextEditingController();
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
+  }
   final _foldingCellKey = GlobalKey<SimpleFoldingCellState>();
   void onGroupPressed(BuildContext context) => Navigator.pop(context);
   Color hexToColor(String code) => Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
-  
+  void onSuccess(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => ScavengerHappyWidget(nextEpisode: "five",)));
+  void onFailure(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => ScavengerSad()));
+  void onFABPress(BuildContext context){
+    print(myController.text);
+    if (myController.text.toString().contains("79")){
+      onSuccess(context);
+    } else {
+      onFailure(context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
   
@@ -42,7 +64,7 @@ class PuzzleFour extends StatelessWidget {
             Align(
               alignment: Alignment.topCenter,
               child: Container(
-                margin: EdgeInsets.only(top: 80),
+                margin: EdgeInsets.only(top: 40),
                 child: Text(
                   "Puzzle #4",
                   style: TextStyle(
@@ -59,9 +81,9 @@ class PuzzleFour extends StatelessWidget {
             Align(
               alignment: Alignment.topCenter,
               child: Container(
-                margin: EdgeInsets.only(top: 60),
+                margin: EdgeInsets.only(top: 30),
                 child: Text(
-                  "For this last test, we will give you the following indication to find the code unlocking the puzzle:\n \n D-7",
+                  "Find the code unlocking the puzzle:\n \n D-7",
                   style: TextStyle(
                     color: Color.fromARGB(255, 255, 255, 255),
                     fontSize: 24,
@@ -90,7 +112,7 @@ class PuzzleFour extends StatelessWidget {
               child: Container(
                 // margin: EdgeInsets.only(top: 20),
                 child: TextField(
-                  obscureText: true,
+                   controller: myController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Key',
@@ -108,11 +130,12 @@ class PuzzleFour extends StatelessWidget {
         color: hexToColor("#1b868c"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () => this.onFABPress(context),
         tooltip: 'Increment Counter',
         child: Text("Submit"),
       ),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    resizeToAvoidBottomInset: false,
     );
   }
 

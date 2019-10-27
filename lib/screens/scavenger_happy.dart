@@ -1,8 +1,17 @@
+import 'package:boomba/screens/puzzle_four.dart';
+import 'package:boomba/screens/puzzle_three.dart';
+import 'package:boomba/screens/puzzle_two.dart';
+import 'package:boomba/screens/scavenger_expl1.dart';
+import 'package:boomba/screens/scavenger_expl2.dart';
+import 'package:boomba/screens/scavenger_expl3.dart';
+import 'package:boomba/screens/scavenger_expl4.dart';
 import 'package:boomba/screens/show_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 
 class ScavengerHappyWidget extends StatefulWidget {
+  final String nextEpisode;
+  ScavengerHappyWidget({@required this.nextEpisode});
   _ScavengerHappy createState() => _ScavengerHappy();
 }
 
@@ -12,6 +21,17 @@ class _ScavengerHappy extends State<ScavengerHappyWidget> with TickerProviderSta
 
   Color hexToColor(String code) => Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
   void onGroupPressed(BuildContext context) => Navigator.pop(context);
+  void onFABPress(BuildContext context) {
+    if (widget.nextEpisode == "two"){
+      Navigator.push(context, MaterialPageRoute(builder: (context) => ScavengerExplain1()));
+    } else if (widget.nextEpisode == "three") {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => ScavengerExplain2()));
+    } else if (widget.nextEpisode == "four"){
+      Navigator.push(context, MaterialPageRoute(builder: (context) => ScavengerExplain3()));
+    } else {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => ScavengerExplain4()));
+    }
+  }
 
   AnimationController controller;
   Animation<double> animation;
@@ -65,7 +85,7 @@ class _ScavengerHappy extends State<ScavengerHappyWidget> with TickerProviderSta
                 )
               ),
             ),
-            Spacer(),
+            // Spacer(),
             ShowUp(
               delay: delayAmount + 200,
               child: Image.network(randomGif)
@@ -79,8 +99,8 @@ class _ScavengerHappy extends State<ScavengerHappyWidget> with TickerProviderSta
         color: hexToColor("#1b868c"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
-        child: Text("Start"),
+        onPressed: () => onFABPress(context),
+        child: Text("Next"),
       ),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );

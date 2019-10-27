@@ -1,3 +1,4 @@
+import 'package:boomba/screens/puzzle_two.dart';
 import 'package:boomba/screens/show_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
@@ -10,6 +11,7 @@ class _ScavengerExplain1 extends State<ScavengerExplain1> with TickerProviderSta
   
   Color hexToColor(String code) => Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
   void onGroupPressed(BuildContext context) => Navigator.pop(context);
+  void onFABPress(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => PuzzleTwo()));
 
   AnimationController controller;
   Animation<double> animation;
@@ -68,7 +70,7 @@ class _ScavengerExplain1 extends State<ScavengerExplain1> with TickerProviderSta
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Container(
-                  margin: EdgeInsets.only(top: 110),
+                  margin: EdgeInsets.only(top: 50),
                   child: Text(
                     'Congrats! \n Puzzle #1 completed',
                     style: TextStyle(
@@ -88,7 +90,7 @@ class _ScavengerExplain1 extends State<ScavengerExplain1> with TickerProviderSta
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Container(
-                  margin: EdgeInsets.only(top: 110),
+                  margin: EdgeInsets.only(top: 50),
                   child: Text(
                     'The Major League Hacking is the official student hackathon league. MLH powers up and mentors more than 200 competitions each year.\n Thanks to them, students compete building projects like this one.',
                     style: TextStyle(
@@ -103,7 +105,7 @@ class _ScavengerExplain1 extends State<ScavengerExplain1> with TickerProviderSta
                 )
               ),
             ),
-            Spacer(),
+            // Spacer(),
       //       ShowUp(
       //         delay: delayAmount + 100,
       //         child: Image.network(randomGif)
@@ -117,7 +119,7 @@ class _ScavengerExplain1 extends State<ScavengerExplain1> with TickerProviderSta
         color: hexToColor("#1b868c"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () => this.onFABPress(context),
         child: Text("Next"),
       ),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

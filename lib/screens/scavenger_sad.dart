@@ -67,7 +67,7 @@ class _ScavengerSad extends State<ScavengerSad> with TickerProviderStateMixin {
                 )
               ),
             ),
-            Spacer(),
+            // Spacer(),
             ShowUp(
               delay: delayAmount + 100,
               child: Image.network(randomGif)
@@ -81,7 +81,7 @@ class _ScavengerSad extends State<ScavengerSad> with TickerProviderStateMixin {
         color: hexToColor("#1b868c"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () => this.onGroupPressed(context),
         child: Text("Retry"),
       ),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

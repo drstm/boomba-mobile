@@ -1,3 +1,4 @@
+import 'package:boomba/screens/puzzle_four.dart';
 import 'package:boomba/screens/show_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
@@ -10,6 +11,7 @@ class _ScavengerExplain3 extends State<ScavengerExplain3> with TickerProviderSta
 
   Color hexToColor(String code) => Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
   void onGroupPressed(BuildContext context) => Navigator.pop(context);
+  void onFABPress(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => PuzzleFour()));
 
   AnimationController controller;
   Animation<double> animation;
@@ -68,7 +70,7 @@ class _ScavengerExplain3 extends State<ScavengerExplain3> with TickerProviderSta
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Container(
-                  margin: EdgeInsets.only(top: 80),
+                  margin: EdgeInsets.only(top: 50),
                   child: Text(
                     'Congrats! \n Puzzle #3 completed',
                     style: TextStyle(
@@ -88,12 +90,12 @@ class _ScavengerExplain3 extends State<ScavengerExplain3> with TickerProviderSta
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Container(
-                  margin: EdgeInsets.only(top: 80),
+                  margin: EdgeInsets.only(top: 40),
                   child: Text(
                     'James J. Stoker was a mathematician and engineer, director and co-founder of the Courant Institute of Mathematics. \n One of his many contributions was defining the mathematical theory behind water waves. Next time you Surf, he will be watching...',
                     style: TextStyle(
                       color: hexToColor("#1b868c"),
-                      fontSize: 24,
+                      fontSize: 20,
                       letterSpacing: -1,
                       fontFamily: "Lato",
                       fontWeight: FontWeight.w700,
@@ -117,7 +119,7 @@ class _ScavengerExplain3 extends State<ScavengerExplain3> with TickerProviderSta
         color: hexToColor("#1b868c"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () => this.onFABPress(context),
         child: Text("Next"),
       ),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
