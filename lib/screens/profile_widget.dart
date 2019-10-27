@@ -1,22 +1,24 @@
 
+import 'package:boomba/screens/scavenger_start.dart';
 import 'package:flutter/material.dart';
-import 'package:boomba/cells/view_item_widget.dart';
-import 'package:boomba/cells/view_three_item_widget.dart';
-import 'package:boomba/cells/view_two_item_widget.dart';
 import 'package:boomba/screens/profile_settings_widget.dart';
 
 
 class ProfileWidget extends StatelessWidget {
   
   void onLeftItemPressed(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileSettingsWidget()));
-  
+  Color hexToColor(String code) => Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
+  void HackNYScavenger(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => ScavengerWidget()));
+
   @override
   Widget build(BuildContext context) {
   
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: hexToColor("#1b868c"),
         title: Text(
-          "Dr. What Profile",
+          "Scavenger Hunts",
           style: TextStyle(
             color: Color.fromARGB(255, 255, 255, 255),
             fontSize: 17,
@@ -28,65 +30,53 @@ class ProfileWidget extends StatelessWidget {
           FlatButton(
             onPressed: () => this.onLeftItemPressed(context),
             textColor: Color.fromARGB(255, 255, 255, 255),
-            child: Text(
-              "Settings",
-              style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
-                fontSize: 12,
-                fontFamily: "",
-              ),
-              textAlign: TextAlign.left,
-            ),
+            child: new Icon(Icons.settings)
           ),
-        ],
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment(-0.014, 0.515),
-              end: Alignment(1.014, 0.485),
-              stops: [
-                0,
-                1,
-              ],
-              colors: [
-                Color.fromARGB(255, 98, 113, 248),
-                Color.fromARGB(255, 28, 135, 140),
-              ],
-            ),
-          ),
-        ),
+        ]
       ),
       body: Container(
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 244, 242, 244),
+          gradient: LinearGradient(
+            begin: Alignment(0.311, 1.098),
+            end: Alignment(0.689, -0.098),
+            stops: [
+              0,
+              1,
+            ],
+            colors: [
+              hexToColor("#6271F7"),
+              hexToColor("#1B878C"),
+            ],
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Divider(color: Colors.black, height: 1),
             Container(
-              height: 297,
-              margin: EdgeInsets.only(top: 64),
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 255, 255, 255),
-              ),
+              height: 250,
+               margin: EdgeInsets.only(top: 20),
+              //decoration: BoxDecoration(
+                //color: Color.fromARGB(255, 255, 255, 255),
+              //),
               child: Column(
                 children: [
                   Container(
                     width: 124,
                     height: 124,
-                    margin: EdgeInsets.only(top: 25),
+                    // margin: EdgeInsets.only(top: 5),
                     child: Image.asset(
-                      "assets/images/avatar-temp.png",
-                      fit: BoxFit.none,
+                      "assets/images/hackny_logo_small.png",
+                      fit: BoxFit.scaleDown,
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 11),
+                    margin: EdgeInsets.only(top: 5),
                     child: Text(
-                      "Dr. What",
+                      "HackNY at NYU Courant",
                       style: TextStyle(
-                        color: Color.fromARGB(255, 5, 12, 22),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         fontSize: 26,
                         fontFamily: "Lato",
                       ),
@@ -94,219 +84,89 @@ class ProfileWidget extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 5),
-                    child: Opacity(
-                      opacity: 0.4,
-                      child: Text(
-                        "1 Phone Booth, Andromeda",
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 5, 12, 22),
-                          fontSize: 12,
-                          fontFamily: "Lato",
-                        ),
-                        textAlign: TextAlign.center,
+                    width: 150,
+                    margin: EdgeInsets.only(bottom: 20),
+                    child: FlatButton.icon(
+                      //color: hexToColor("#1b868c"),
+                      icon: Icon(Icons.play_circle_outline), //`Icon` to display
+                      label: Text('Begin',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontSize: 18,
+                        fontFamily: "Lato",
                       ),
+                      ),
+                      textColor: Color.fromARGB(255, 255, 255, 255),
+                      onPressed: () => this.HackNYScavenger(context)
                     ),
                   ),
-                  Spacer(),
+                ],
+              ),
+            ),
+            Divider(color: Colors.black, height: 5),
+            // Container(
+            //   height: 30,
+            //   // decoration: BoxDecoration(
+            //   //   color: hexToColor("#1b868c")
+            //   // ),
+            // ),
+            Container(
+              height: 270,
+              margin: EdgeInsets.only(top: 20),
+              // decoration: BoxDecoration(
+              //   color: Color.fromARGB(255, 255, 255, 255),
+              // ),
+              child: Column(
+                children: [
                   Container(
-                    width: 300,
-                    margin: EdgeInsets.only(bottom: 27),
+                    width: 124,
+                    height: 124,
+                    margin: EdgeInsets.only(top: 5),
+                    child: Image.asset(
+                      "assets/images/wsp_small.png",
+                      fit: BoxFit.scaleDown,
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 11),
                     child: Text(
-                      "Traveler, dreamer, showman. Occasionally gets into fight, not always survives.",
+                      "Washington Square Park at NYU",
                       style: TextStyle(
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontSize: 14,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontSize: 26,
                         fontFamily: "Lato",
                       ),
                       textAlign: TextAlign.center,
                     ),
                   ),
-                ],
-              ),
-            ),
-            Container(
-              height: 84,
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 251, 251, 251),
-              ),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Positioned(
-                    left: 42,
-                    right: 41,
-                    child: Container(
-                      height: 44,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Container(
-                              width: 42,
-                              height: 44,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  Text(
-                                    "365",
-                                    style: TextStyle(
-                                      color: Color.fromARGB(255, 248, 132, 98),
-                                      fontSize: 24,
-                                      fontFamily: "Lato",
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  Spacer(),
-                                  Container(
-                                    margin: EdgeInsets.symmetric(horizontal: 2),
-                                    child: Opacity(
-                                      opacity: 0.4,
-                                      child: Text(
-                                        "Photos",
-                                        style: TextStyle(
-                                          color: Color.fromARGB(255, 0, 0, 0),
-                                          fontSize: 12,
-                                          fontFamily: "Lato",
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Spacer(),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Container(
-                              width: 43,
-                              height: 44,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.only(left: 1),
-                                    child: Text(
-                                      "326",
-                                      style: TextStyle(
-                                        color: Color.fromARGB(255, 140, 28, 140),
-                                        fontSize: 24,
-                                        fontFamily: "Lato",
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                  Spacer(),
-                                  Opacity(
-                                    opacity: 0.4,
-                                    child: Text(
-                                      "Stalking",
-                                      style: TextStyle(
-                                        color: Color.fromARGB(255, 0, 0, 0),
-                                        fontSize: 12,
-                                        fontFamily: "Lato",
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
+                  Spacer(),
+                  Container(
+                    width: 150,
+                    margin: EdgeInsets.only(bottom: 20),
+                    child: FlatButton.icon(
+                      // color: hexToColor("#1b868c"),
+                      icon: Icon(Icons.play_circle_outline), //`Icon` to display
+                      label: Text('Begin',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontSize: 18,
+                        fontFamily: "Lato",
                       ),
-                    ),
-                  ),
-                  Positioned(
-                    child: Container(
-                      width: 43,
-                      height: 44,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(left: 1),
-                            child: Text(
-                              "58k",
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 217, 104, 111),
-                                fontSize: 24,
-                                fontFamily: "Lato",
-                                fontWeight: FontWeight.w700,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                          Spacer(),
-                          Container(
-                            margin: EdgeInsets.symmetric(horizontal: 1),
-                            child: Opacity(
-                              opacity: 0.4,
-                              child: Text(
-                                "Stalkers",
-                                style: TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 12,
-                                  fontFamily: "Lato",
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
-                        ],
                       ),
+                      textColor: Color.fromARGB(255, 255, 255, 255),
+                      onPressed: () {
+                        //Code to execute when Floating Action Button is clicked
+                        //...
+                      },
                     ),
                   ),
                 ],
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                margin: EdgeInsets.only(left: 2, top: 20, right: 2, bottom: 52),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: Opacity(
-                        opacity: 0.4,
-                        child: Text(
-                          "LATEST PHOTOS",
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 0, 0, 0),
-                            fontSize: 12,
-                            letterSpacing: -0.074,
-                            fontFamily: "Lato",
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 122,
-                      margin: EdgeInsets.only(top: 13),
-                      child: GridView.builder(
-                        scrollDirection: Axis.horizontal,
-                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 122,
-                          mainAxisSpacing: 10,
-                        ),
-                        itemBuilder: (context, index) => ViewItemWidget(),
-                      ),
-                    ),
-                  ],
-                ),
               ),
             ),
           ],
         ),
       ),
+      resizeToAvoidBottomInset: false,
     );
   }
 }

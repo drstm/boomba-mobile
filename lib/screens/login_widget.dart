@@ -1,11 +1,18 @@
 
+
+import 'package:boomba/screens/scavenger_expl4.dart';
+import 'package:boomba/screens/puzzle_three.dart';
+import 'package:boomba/screens/puzzle_four.dart';
 import 'package:flutter/material.dart';
 import 'package:boomba/screens/tab_bar_widget.dart';
+import 'package:boomba/screens/profile_widget.dart';
+
 
 
 class LoginWidget extends StatelessWidget {
   
-  void onLoginPressed(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => TabBarWidget()));
+
+  void onLoginPressed(BuildContext context) => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileWidget()));
   
   void onForgotYourPasswordPressed(BuildContext context) {
   
@@ -18,12 +25,8 @@ class LoginWidget extends StatelessWidget {
   
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => this.onGroupPressed(context),
-          icon: Image.asset("assets/images/group-2.png",),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+        elevation: 0.0,
+        backgroundColor: hexToColor("#1b868c")
       ),
       body: Container(
         constraints: BoxConstraints.expand(),
@@ -187,7 +190,7 @@ class LoginWidget extends StatelessWidget {
                   textColor: Color.fromARGB(255, 255, 255, 255),
                   padding: EdgeInsets.all(0),
                   child: Text(
-                    "Forgot your password?",
+                    "Reset password?",
                     style: TextStyle(
                       fontSize: 15,
                       fontFamily: "Lato",
@@ -200,6 +203,11 @@ class LoginWidget extends StatelessWidget {
           ],
         ),
       ),
+      resizeToAvoidBottomInset: false,
     );
   }
+}
+
+Color hexToColor(String code) {
+  return new Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
 }
